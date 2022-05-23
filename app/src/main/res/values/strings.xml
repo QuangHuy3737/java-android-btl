@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">ĐE2TH2QLBAIHAT</string>
+    <string-array name="tacgia">
+        <item>300.000Đ</item>
+        <item>400.000Đ</item>
+        <item>500.000Đ</item>
+        <item>600.000Đ</item>
+        <item>700.000Đ</item>
+
+
+    </string-array>
+    <string-array name="nxb">
+        <item>Vượt đèn đỏ</item>
+        <item>Đi sai làn</item>
+        <item>Đi ngược chiều</item>
+        <item>Đi quá tốc độ</item>
+
+    </string-array>
+    <string-array name="favorite">
+        <item>Chưa đóng phạt</item>
+        <item>Đã đóng phạt</item>
+
+
+    </string-array>
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+
+
+</resources>

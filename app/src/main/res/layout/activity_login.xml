@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:layout_marginTop="100dp"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Đăng nhập"
+        android:textSize="35dp"
+        android:textColor="@color/white"
+        android:background="#36C8AB"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ten dang nhap"
+        android:id="@+id/etTen"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:id="@+id/etPassword"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center"
+
+            android:layout_height="wrap_content"
+            android:text="Đăng Ký"
+            android:layout_width="120dp"
+
+            android:background="#36C8AB"
+            android:textColor="@color/white"
+            android:id="@+id/btRegister"/>
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Đăng Nhập"
+            android:background="#B84D9E"
+            android:textColor="@color/white"
+            android:id="@+id/btLogin"/>
+    </LinearLayout>
+
+
+</LinearLayout>
