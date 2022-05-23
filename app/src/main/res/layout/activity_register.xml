@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
     <TextView
         android:layout_width="match_parent"
         android:gravity="center"
@@ -17,29 +18,52 @@
 
         />
     <EditText
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ten dang nhap"
         android:id="@+id/etTen"
         android:layout_marginTop="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Password"-->
+<!--        android:id="@+id/etPassword"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:layout_marginTop="20dp"/>-->
+    <com.google.android.material.textfield.TextInputLayout
+    app:endIconMode="password_toggle"
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+    android:inputType="textPassword"
+        android:layout_width="match_parent"
         android:hint="Password"
+        android:layout_height="wrap_content"
         android:id="@+id/etPassword"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"/>
+
+        />
+
+</com.google.android.material.textfield.TextInputLayout>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Dia chi"
         android:id="@+id/etDiaChi"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Bien so xe"
         android:id="@+id/etBienSo"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,24 +73,35 @@
         android:layout_marginTop="20dp">
 
         <Button
-            android:layout_marginRight="30dp"
             android:layout_gravity="center"
-
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="Đăng Ký"
-            android:layout_width="120dp"
-
-            android:background="#36C8AB"
+            android:background="@drawable/button2"
             android:textColor="@color/white"
             android:id="@+id/btRegister"/>
-        <Button
-            android:layout_gravity="center"
-            android:layout_width="120dp"
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đăng Nhập"
-            android:background="#B84D9E"
-            android:textColor="@color/white"
+            android:text="Bạn đã có tài khoản?"
+            />
+        <TextView
+            android:layout_marginLeft="-120dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Đăng nhập"
+            android:layout_width="120dp"
+            android:textColor="#1A6CFF"
             android:id="@+id/btLogin"/>
+
     </LinearLayout>
 
 

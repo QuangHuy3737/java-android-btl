@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btUpdate"
 
-            android:background="#36C8AB"
+            android:background="@drawable/button"
             android:textColor="@color/white"
 
             android:layout_weight="1"
@@ -133,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btRemove"
-            android:background="#E91E63"
+            android:background="@drawable/button3"
             android:layout_weight="1"
             android:text="Remove"
             android:textColor="@color/white"
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btBack"
-            android:background="#FF5722"
+            android:background="@drawable/button2"
             android:layout_weight="1"
             android:text="Back"
             android:textColor="@color/white"

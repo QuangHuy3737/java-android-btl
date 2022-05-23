@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.th2.dal.SQLiteHelper;
@@ -16,6 +17,7 @@ import com.example.th2.model.User;
 public class RegisterActivity extends AppCompatActivity {
     private EditText etTen, etPassword, etDiaChi, etBienSo;
     private Button btRegister,btLogin;
+    private TextView login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +27,8 @@ public class RegisterActivity extends AppCompatActivity {
         etDiaChi=findViewById(R.id.etDiaChi);
         etBienSo=findViewById(R.id.etBienSo);
         btRegister= findViewById(R.id.btRegister);
-        btLogin = findViewById(R.id.btLogin);
-        btLogin.setOnClickListener(new View.OnClickListener() {
+        login = findViewById(R.id.btLogin);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);

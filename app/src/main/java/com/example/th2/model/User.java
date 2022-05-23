@@ -3,6 +3,9 @@ package com.example.th2.model;
 public class User {
     private String name, password, diaChi, bienSo;
     private int id;
+
+
+
     public User(String name, String password, String diaChi, String bienSo) {
         this.name = name;
         this.password = password;

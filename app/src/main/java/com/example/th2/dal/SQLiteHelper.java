@@ -90,6 +90,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return sqLiteDatabase.insert("users",null,values);
 
     }
+    //get user
+    public List<Item>  getUser(String name){
+            List<Item> list=new ArrayList<>();
+            String whereClause="name like?";
+            String[] whereArgs={"%"+name+"%"};
+            SQLiteDatabase st=getReadableDatabase();
+            Cursor rs=st.query("items",null,whereClause,whereArgs,null,
+                    null,null);
+            while(rs!=null && rs.moveToNext()){
+                int id=rs.getInt(0);
+                String sach=rs.getString(1);
+                String tomtat=rs.getString(2);
+                String tacgia=rs.getString(3);
+                String nxb=rs.getString(4);
+                String favourite=rs.getString(5);
+                list.add(new Item(id,sach,tomtat,tacgia,nxb,favourite));
+            }
+            return list;
+    }
     //login
     public boolean login(User i){
         ContentValues values=new ContentValues();

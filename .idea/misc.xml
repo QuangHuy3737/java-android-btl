@@ -23,6 +23,8 @@
         <entry key="..\:/MyApplication/TH2/app/src/main/res/layout/item_spinner.xml" value="0.10208333333333333" />
         <entry key="..\:/MyApplication/TH2/app/src/main/res/menu/navigation.xml" value="0.10208333333333333" />
         <entry key="app/src/main/res/drawable/button.xml" value="0.341" />
+        <entry key="app/src/main/res/drawable/button2.xml" value="0.2125" />
+        <entry key="app/src/main/res/drawable/button3.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_infor.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.341" />
         <entry key="app/src/main/res/drawable/ic_login_bk.xml" value="0.341" />
@@ -31,9 +33,10 @@
         <entry key="app/src/main/res/layout/activity_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2545871559633027" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_nop_tien.xml" value="0.38424821002386633" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2642857142857143" />
         <entry key="app/src/main/res/layout/activity_update_delete.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_infor.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_infor.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/item.xml" value="0.259375" />

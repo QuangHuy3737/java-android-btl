@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddActivity"
-    >
+    tools:context=".AddActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -17,7 +16,7 @@
             android:layout_height="match_parent"
             android:textColor="@color/white"
             android:gravity="center"
-            android:text="Thêm lỗi vi phạm"
+            android:text="Nộp tiền vi phạm giao thông"
             android:textSize="22dp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"/>
@@ -30,111 +29,128 @@
         android:paddingRight="5dp"
         android:orientation="vertical"
         >
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvSach"
-            android:hint="Tên người vi phạm"/>
+            android:hint="Nhập tên"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvTomtat"
-            android:hint="Vị trí vi phạm"
-            android:layout_marginBottom="20dp"/>
+            android:hint="Nhập biển số"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
         <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Mức phạt"
-        android:textSize="17dp"
-        />
-        <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="155dp"
             android:layout_height="wrap_content"
-            android:id="@+id/spTacGia"
+            android:layout_weight="2"
+            android:text="Mức phạt"
             android:layout_marginTop="10dp"
-            android:layout_weight="5"/>
+            android:textSize="17dp" />
 
-
+<!--        <Spinner-->
+<!--            android:id="@+id/spTacGia"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_weight="10" />-->
     </LinearLayout>
-        <LinearLayout
-            android:layout_marginBottom="20dp"
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tên lỗi vi phạm"
-                android:textSize="17dp"
-                android:layout_weight="1"
-                />
-            <Spinner
+            android:text="Tên lỗi vi phạm"
+            android:textSize="17dp"
+            android:layout_marginTop="20dp"
+
+            android:layout_weight="1"
+            />
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spNxb"
             android:layout_marginTop="20dp"
-                android:layout_weight="1"/>
-        </LinearLayout>
+            android:layout_weight="1"/>
+    </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tên lỗi vi phạm"
-                android:textSize="17dp"
-                android:layout_weight="1"
-                />
+            android:text="Tên lỗi vi phạm"
+            android:textSize="17dp"
+            android:layout_marginTop="20dp"
+
+            android:layout_weight="1"
+            />
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spFavourite"
             android:layout_marginTop="20dp"
             android:layout_weight="1"/>
-        </LinearLayout>
-        <LinearLayout
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:weightSum="3"
         android:layout_marginTop="20dp">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btAdd"
+            android:id="@+id/btUpdate"
+
             android:background="@drawable/button"
-            android:layout_weight="1"
-            android:text="Add"
-            android:layout_marginLeft="5dp"
             android:textColor="@color/white"
-            android:textSize="18dp"
+
+            android:layout_weight="1"
+            android:text="Update"
+            android:layout_marginLeft="5dp"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btCancel"
+            android:id="@+id/btRemove"
             android:background="@drawable/button3"
             android:layout_weight="1"
-            android:text="Cancel"
+            android:text="Remove"
             android:textColor="@color/white"
-            android:layout_marginLeft="5dp"
-            android:textSize="18dp"
+            android:layout_marginLeft="5dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btBack"
+            android:background="@drawable/button2"
+            android:layout_weight="1"
+            android:text="Back"
+            android:textColor="@color/white"
 
+            android:layout_marginLeft="5dp"
             />
 
     </LinearLayout>
-    </LinearLayout>
-
-
 
 
 
