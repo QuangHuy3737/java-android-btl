@@ -44,12 +44,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
         Item item=list.get(position);
-        holder.sach.setText(item.getSach());
-        holder.tomtat.setText(item.getTomtat());
-        holder.tacgia.setText(item.getTacgia());
-        holder.nxb.setText(item.getNxb());
+        holder.name.setText(item.getSach());
+        holder.bs.setText(item.getTomtat());
+        holder.gia.setText(item.getTacgia());
+        holder.tenLoi.setText(item.getNxb());
 
-        holder.favourite.setText(item.getFavourite());
+        holder.dongPhat.setText(item.getFavourite());
 
     }
 
@@ -59,15 +59,15 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     }
 
     public class HomeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView sach,tomtat,tacgia,nxb,favourite;
+        private TextView name,bs,gia,tenLoi,dongPhat;
 
         public HomeViewHolder(@NonNull View view) {
             super(view);
-            sach=view.findViewById(R.id.tvSach);
-            tomtat=view.findViewById(R.id.tvTomtat);
-            tacgia=view.findViewById(R.id.tvTacGia);
-            nxb=view.findViewById(R.id.tvNxb);
-            favourite=view.findViewById(R.id.tvFavourite);
+            name=view.findViewById(R.id.tvSach);
+            bs=view.findViewById(R.id.tvTomtat);
+            gia=view.findViewById(R.id.tvTacGia);
+            tenLoi=view.findViewById(R.id.tvFavourite);
+            dongPhat=view.findViewById(R.id.tvNxb);
             view.setOnClickListener(this);
 
         }

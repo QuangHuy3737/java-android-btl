@@ -13,12 +13,20 @@ public class User {
         this.bienSo = bienSo;
     }
 
+
+
     public User(String name, String password, String diaChi, String bienSo, int id) {
         this.name = name;
         this.password = password;
         this.diaChi = diaChi;
         this.bienSo = bienSo;
         this.id = id;
+    }
+
+    public User(String name, String bienSo,String diaChi) {
+        this.name = name;
+        this.bienSo = bienSo;
+        this.diaChi = diaChi;
     }
 
     public User(String name, String password) {

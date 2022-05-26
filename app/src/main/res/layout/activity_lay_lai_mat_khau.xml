@@ -4,53 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
+    tools:context=".LayLaiMatKhauActivity"
     android:orientation="vertical"
     >
     <TextView
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:text="Đăng ký"
+        android:text="Quên mật khẩu"
         android:textSize="35dp"
         android:textColor="@color/white"
         android:background="#36C8AB"
-
         />
     <EditText
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ten dang nhap"
-        android:id="@+id/etTen"
-        android:layout_marginTop="20dp"/>
-<!--    <EditText-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Password"-->
-<!--        android:id="@+id/etPassword"-->
-<!--        android:inputType="textPassword"-->
-<!--        android:layout_marginTop="20dp"/>-->
-    <com.google.android.material.textfield.TextInputLayout
-    app:endIconMode="password_toggle"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
-
-    <com.google.android.material.textfield.TextInputEditText
-    android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:hint="Password"
-        android:layout_height="wrap_content"
-        android:id="@+id/etPassword"
-
+        android:layout_marginTop="50dp"
+        android:id="@+id/etTen"
         />
-
-
-
-</com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         app:endIconMode="password_toggle"
         android:layout_height="wrap_content"
@@ -61,31 +35,30 @@
         <com.google.android.material.textfield.TextInputEditText
             android:inputType="textPassword"
             android:layout_width="match_parent"
-            android:hint="Nhập lại password"
+            android:hint="New Password"
             android:layout_height="wrap_content"
-            android:id="@+id/etPasswordAgain"
+            android:id="@+id/etPassword"
 
             />
 
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        app:endIconMode="password_toggle"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:hint="Confirm Password"
+            android:layout_height="wrap_content"
+            android:id="@+id/etConfirmPassword"
+
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Dia chi"
-        android:id="@+id/etDiaChi"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Bien so xe"
-        android:id="@+id/etBienSo"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,10 +70,10 @@
             android:layout_gravity="center"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="Đăng Ký"
+            android:text="Lưu mật khẩu"
             android:background="@drawable/button2"
             android:textColor="@color/white"
-            android:id="@+id/btRegister"/>
+            android:id="@+id/btSave"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -112,18 +85,13 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bạn đã có tài khoản?"
+            android:text="Quay lại đăng nhập"
+            android:id="@+id/tvBack"
             />
-        <TextView
-            android:layout_marginLeft="-130dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text="Đăng nhập"
-            android:layout_width="120dp"
-            android:textColor="#1A6CFF"
-            android:id="@+id/btLogin"/>
+
 
     </LinearLayout>
+
 
 
 </LinearLayout>

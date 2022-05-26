@@ -25,6 +25,9 @@
             android:name=".UpdateDeleteActivity"
             android:exported="false" />
         <activity
+            android:name=".LayLaiMatKhauActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddActivity"
             android:exported="false" />
         <activity

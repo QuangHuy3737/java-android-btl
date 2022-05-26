@@ -10,7 +10,7 @@
         android:id="@+id/search"
         android:layout_marginTop="10dp"
         app:iconifiedByDefault="false"
-        app:queryHint="nhap ten bai hat"
+        app:queryHint="Nhập tên cần tìm"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:text="Tim kiem theo album"/>
+            android:text="Tim kiếm theo mức phạt "/>
 
 
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:text="Sap xep theo the loai"
+            android:text="Tìm kiếm theo lỗi phạt"
             />
     </LinearLayout>
 
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/spTacGia"
+            android:id="@+id/spGia"
             android:tooltipText="album"
             />
         <Spinner
@@ -53,24 +53,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/spNxb"
+            android:id="@+id/spLoi"
             />
 
 
 
     </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:id="@+id/btSearch"
-        android:background="#36C8AB"
-        android:text="Search"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-
-
-        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

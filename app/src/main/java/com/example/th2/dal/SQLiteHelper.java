@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME="Sach.db";
+    private static final String DATABASE_NAME="giaoThong.db";
     private static int DATABASE_VERSION=5;
     public SQLiteHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,12 +25,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="CREATE TABLE items(" +
+        String sql="CREATE TABLE data(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                "sach TEXT,tomtat TEXT,tacgia TEXT,nxb TEXT,favourite TEXT)";
+                "name TEXT,bienSo TEXT,gia TEXT,viTri TEXT,tenLoi TEXT)";
         String sql1="CREATE TABLE users(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                "name TEXT,password TEXT,diaChi TEXT,bienSo TEXT)";
+                "name TEXT,email TEXT, password TEXT,diaChi TEXT,bienSo TEXT)";
         db.execSQL(sql);
         db.execSQL(sql1);
 
@@ -38,6 +38,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+//        onCreate((sqLiteDatabase));
 
     }
 
@@ -50,8 +51,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public List<Item> getAll(){
         List<Item> list=new ArrayList<>();
         SQLiteDatabase st=getReadableDatabase();
-        String order ="tomtat DESC";
-        Cursor rs=st.query("items",null,null,
+        String order ="name DESC";
+        Cursor rs=st.query("data",null,null,
                 null,null,null,order);
         while((rs!=null) && (rs.moveToNext())){
             int id=rs.getInt(0);
@@ -70,19 +71,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     //add
     public long addItem(Item i){
         ContentValues values=new ContentValues();
-        values.put("sach",i.getSach());
-        values.put("tomtat",i.getTomtat());
-        values.put("tacgia",i.getTacgia());
-        values.put("nxb",i.getNxb());
-        values.put("favourite",i.getFavourite());
+        values.put("name",i.getSach());
+        values.put("bienSo",i.getTomtat());
+        values.put("gia",i.getTacgia());
+        values.put("viTri",i.getNxb());
+        values.put("tenLoi",i.getFavourite());
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
-        return sqLiteDatabase.insert("items",null,values);
+        return sqLiteDatabase.insert("data",null,values);
 
     }
     //add user
     public long addUser(User i){
         ContentValues values=new ContentValues();
         values.put("name",i.getName());
+        values.put("email","huyquangtran37@gmail.com");
+
         values.put("password",i.getPassword());
         values.put("diaChi",i.getDiaChi());
         values.put("bienSo",i.getBienSo());
@@ -96,8 +99,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             String whereClause="name like?";
             String[] whereArgs={"%"+name+"%"};
             SQLiteDatabase st=getReadableDatabase();
-            Cursor rs=st.query("items",null,whereClause,whereArgs,null,
+            Cursor rs=st.query("data",null,whereClause,whereArgs,null,
                     null,null);
+
             while(rs!=null && rs.moveToNext()){
                 int id=rs.getInt(0);
                 String sach=rs.getString(1);
@@ -109,38 +113,82 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             }
             return list;
     }
+    public Boolean checkusername(String username) {
+        SQLiteDatabase MyDB = getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from users where name = ?", new String[]{username});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+    //Lấy một SP biết ID
+    public User getUserByName(String name) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT  name, bienSo, diaChi from users where name = ?",
+                new String[]{name + ""});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            String ten = cursor.getString(0);
+            String bienSo = cursor.getString(1);
+            String dc = cursor.getString(2);
+
+            User user = new User(ten, bienSo,dc);
+            cursor.close();
+            return user;
+        }
+        else{
+            return new User("none","none","none");
+        }
+
+    }
+
     //login
     public boolean login(User i){
         ContentValues values=new ContentValues();
         List<User> list=new ArrayList<>();
         String name = i.getName().toString();
         String password = i.getPassword().toString();
-        String whereClause="sach like?";
-        String[] whereArgs={"%"+name+"%"+password};
+        String whereClause="name = ? and password = ?";
+        String[] whereArgs={name,password};
         SQLiteDatabase st=getReadableDatabase();
-        Cursor rs=st.query("items",null,whereClause,whereArgs,null,
+//
+        Cursor rs=st.query("users",null,whereClause,whereArgs,null,
                 null,null);
-        if(rs!=null && rs.moveToNext()){
+//        Cursor cursor=st.rawQuery("Select * from users where name = ? and password = ?",new String[]{name,password});
+        if(rs.getCount()>0){
             return true;
         }
         else{
-            return true;
+            return false;
         }
     }
+    //update password
+    public int updateNewPassword(User i){
+        ContentValues values=new ContentValues();
+        values.put("password",i.getPassword());
 
+        SQLiteDatabase sqLiteDatabase=getWritableDatabase();
+        String whereClause="name=?";
+        String[] whereArgs={i.getName()};
+
+        return sqLiteDatabase.update("users",values,whereClause,whereArgs);
+
+    }
     //update
     public int update(Item i){
         ContentValues values=new ContentValues();
-        values.put("sach",i.getSach());
-        values.put("tomtat",i.getTomtat());
-        values.put("tacgia",i.getTacgia());
-        values.put("nxb",i.getNxb());
-        values.put("favourite",i.getFavourite());
+        values.put("name",i.getSach());
+        values.put("bienSo",i.getTomtat());
+        values.put("gia",i.getTacgia());
+        values.put("viTri",i.getNxb());
+        values.put("tenLoi",i.getFavourite());
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
         String whereClause="id=?";
         String[] whereArgs={Integer.toString(i.getId())};
 
-        return sqLiteDatabase.update("items",values,whereClause,whereArgs);
+        return sqLiteDatabase.update("data",values,whereClause,whereArgs);
 
     }
     //delete
@@ -148,16 +196,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         String whereClause="id=?";
         String[] whereArgs={Integer.toString(id)};
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
-        return sqLiteDatabase.delete("items",whereClause,whereArgs);
+        return sqLiteDatabase.delete("data",whereClause,whereArgs);
 
     }
     //lay item theo title
     public List<Item> searchBySach(String key){
         List<Item> list=new ArrayList<>();
-        String whereClause="sach like?";
+        String whereClause="name like?";
         String[] whereArgs={"%"+key+"%"};
         SQLiteDatabase st=getReadableDatabase();
-        Cursor rs=st.query("items",null,whereClause,whereArgs,null,
+        Cursor rs=st.query("data",null,whereClause,whereArgs,null,
                 null,null);
         while(rs!=null && rs.moveToNext()){
             int id=rs.getInt(0);
@@ -168,21 +216,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             String favourite=rs.getString(5);
             list.add(new Item(id,sach,tomtat,tacgia,nxb,favourite));
 
-
-
-
         }
         return list;
-
-
-
     }
     public List<Item> SearchByTacGia(String tacgia){
         List<Item> list=new ArrayList<>();
-        String whereClause="tacgia like?";
+        String whereClause="gia like?";
         String[] whereArgs={tacgia};
         SQLiteDatabase st=getReadableDatabase();
-        Cursor rs=st.query("items",null,whereClause,whereArgs,null,
+        Cursor rs=st.query("data",null,whereClause,whereArgs,null,
                 null,null);
         while(rs!=null && rs.moveToNext()){
             int id=rs.getInt(0);
@@ -192,37 +234,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             String nxb=rs.getString(4);
             String favourite=rs.getString(5);
             list.add(new Item(id,sach,tomtat,tgia,nxb,favourite));
-
         }
         return list;
-
-
-
     }
     public List<Item> SearchByNXB(String nxb){
         List<Item> list=new ArrayList<>();
-        String whereClause="nxb like?";
+        String whereClause="tenLoi like?";
         String[] whereArgs={nxb};
         SQLiteDatabase st=getReadableDatabase();
-        Cursor rs=st.query("items",null,whereClause,whereArgs,null,
+        Cursor rs=st.query("data",null,whereClause,whereArgs,null,
                 null,null);
         while(rs!=null && rs.moveToNext()){
             int id=rs.getInt(0);
-
             String sach=rs.getString(1);
             String tomtat=rs.getString(2);
             String tacgia=rs.getString(3);
             String n=rs.getString(4);
             String favourite=rs.getString(5);
             list.add(new Item(id,sach,tomtat,tacgia,n,favourite));
-
         }
         return list;
-
-
-
     }
-
-
-
 }

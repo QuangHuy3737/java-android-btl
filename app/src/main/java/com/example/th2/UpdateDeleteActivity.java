@@ -38,7 +38,7 @@ public class UpdateDeleteActivity extends AppCompatActivity implements View.OnCl
         btRemove.setOnClickListener(this);
         eTomtat.setOnClickListener(this);
 
-        Intent intent=getIntent();
+        Intent intent= getIntent();
         item=(Item) intent.getSerializableExtra("item");
         eSach.setText(item.getSach());
         eTomtat.setText(item.getTomtat());
@@ -78,9 +78,6 @@ public class UpdateDeleteActivity extends AppCompatActivity implements View.OnCl
     private void initView() {
         eTomtat=findViewById(R.id.tvTomtat);
         eSach=findViewById(R.id.tvSach);
-
-
-
         spTacGia=findViewById(R.id.spTacGia);
         spNxb=findViewById(R.id.spNxb);
         spFav=findViewById(R.id.spFavourite);
@@ -103,14 +100,14 @@ public class UpdateDeleteActivity extends AppCompatActivity implements View.OnCl
             finish();
         }
         if(view==btUpdate){
-            String sach=eSach.getText().toString();
-            String tomtat=eTomtat.getText().toString();
-            String tacgia=spTacGia.getSelectedItem().toString();
-            String nxb=spNxb.getSelectedItem().toString();
-            String favourite=spFav.getSelectedItem().toString();
-            if(!sach.isEmpty()&&!tomtat.isEmpty()){
+            String name=eSach.getText().toString();
+            String bienSo=eTomtat.getText().toString();
+            String gia=spTacGia.getSelectedItem().toString();
+            String loi=spNxb.getSelectedItem().toString();
+            String dongPhat=spFav.getSelectedItem().toString();
+            if(!name.isEmpty()&&!bienSo.isEmpty()){
                 int id=item.getId();
-                Item i=new Item(id,sach,tomtat,tacgia,nxb,favourite);
+                Item i=new Item(id,name,bienSo,gia,loi,dongPhat);
                 db=new SQLiteHelper(this);
                 db.update(i);
                 finish();

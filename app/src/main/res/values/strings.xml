@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">ĐE2TH2QLBAIHAT</string>
     <string-array name="tacgia">
-        <item>300.000Đ</item>
-        <item>400.000Đ</item>
-        <item>500.000Đ</item>
-        <item>600.000Đ</item>
-        <item>700.000Đ</item>
+        <item>300000</item>
+        <item>400000</item>
+        <item>500000</item>
+        <item>600000</item>
+        <item>700000</item>
 
 
     </string-array>

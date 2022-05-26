@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.th2.dal.SQLiteHelper;
 import com.example.th2.model.Item;
@@ -56,16 +57,20 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
             finish();
         }
         if(view==btAdd){
-            String sach=eSach.getText().toString();
-            String tomtat=eTomtat.getText().toString();
+            String name=eSach.getText().toString();
+            String bs=eTomtat.getText().toString();
             String tacgia=spTacgia.getSelectedItem().toString();
-            String nxb=spNxb.getSelectedItem().toString();
             String favourite=spFav.getSelectedItem().toString();
-            if(!sach.isEmpty()&&!tomtat.isEmpty()){
-                Item i=new Item(sach,tomtat,tacgia,nxb,favourite);
+            String nxb=spNxb.getSelectedItem().toString();
+
+            if(!name.isEmpty()&&!bs.isEmpty()){
+                Item i=new Item(name,bs,tacgia,favourite,nxb);
                 SQLiteHelper db=new SQLiteHelper(this);
                 db.addItem(i);
                 finish();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
             }
         }
 

@@ -2,9 +2,11 @@ package com.example.th2.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.th2.MainActivity;
 import com.example.th2.R;
 import com.example.th2.UpdateDeleteActivity;
 import com.example.th2.adapter.RecycleViewAdapter;
@@ -24,12 +27,15 @@ public class FragmentList extends Fragment implements RecycleViewAdapter.ItemLis
     private RecycleViewAdapter adapter;
     private RecyclerView recyclerView;
     private SQLiteHelper db;
-
+    private MainActivity mainActivity;
+    private String name="";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mainActivity = (MainActivity) getActivity();
         return inflater.inflate(R.layout.fragment_list,container,false);
+
     }
 
     @Override
@@ -39,8 +45,9 @@ public class FragmentList extends Fragment implements RecycleViewAdapter.ItemLis
         adapter=new RecycleViewAdapter();
         db=new SQLiteHelper(getContext());
 
+        name=mainActivity.getUserName();
 
-       // Item i=new Item(2,"nang am xa dan","son tung","abc","def","co");
+        // Item i=new Item(2,"nang am xa dan","son tung","abc","def","co");
       //  db.addItem(i);
         List<Item> list =db.getAll();
 
@@ -49,15 +56,21 @@ public class FragmentList extends Fragment implements RecycleViewAdapter.ItemLis
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
         adapter.setItemListener(this);
+
+
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Item item=adapter.getItem(position);
-        Intent intent=new Intent(getActivity(), UpdateDeleteActivity.class);
-        intent.putExtra("item",item);
-        startActivity(intent);
+        if(name.equals("admin")){
+            Item item=adapter.getItem(position);
+            Intent intent=new Intent(getActivity(), UpdateDeleteActivity.class);
+            intent.putExtra("item",item);
+            startActivity(intent);
+        }
+        else{
 
+        }
     }
 
     @Override

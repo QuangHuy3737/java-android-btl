@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,20 +12,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.th2.dal.SQLiteHelper;
+import com.example.th2.fragment.FragmentInfor;
 import com.example.th2.model.User;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText etTen, etPassword, etDiaChi, etBienSo;
+    private EditText etTen, etPassword, etBienSo;
     private Button btLogin;
-    private TextView register;
+    private TextView register,tvQuen;
+    public String username="";
+
+    public String getName() {
+        return username;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         etTen=findViewById(R.id.etTen);
         etPassword=findViewById(R.id.etPassword);
+        tvQuen=findViewById(R.id.tvQuen);
         btLogin = findViewById(R.id.btLogin);
         register=findViewById(R.id.btRegister);
+        tvQuen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,LayLaiMatKhauActivity.class);
+                startActivity(intent);
+            }
+        });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +60,10 @@ public class LoginActivity extends AppCompatActivity {
                     boolean res= db.login(user);
                     if(res){
                         finish();
-                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
+                        intent.putExtra("name",name);
+//                        username=name;
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(),"Dang nhap thanh cong",Toast.LENGTH_LONG).show();
                     }

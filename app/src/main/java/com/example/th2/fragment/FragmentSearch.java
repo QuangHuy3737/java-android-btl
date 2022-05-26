@@ -28,12 +28,10 @@ import java.util.List;
 
 public class FragmentSearch extends Fragment implements View.OnClickListener {
     private RecyclerView recyclerView;
-
     private Button btSearch;
     private SearchView searchView;
-
-    private Spinner spNxb;
-    private Spinner spTacGia;
+    private Spinner spLoi;
+    private Spinner spGia;
     private RecycleViewAdapter adapter;
     private SQLiteHelper db;
     @Nullable
@@ -70,22 +68,17 @@ public class FragmentSearch extends Fragment implements View.OnClickListener {
             }
         });
 
-        btSearch.setOnClickListener(this);
-        spNxb.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spLoi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position , long l) {
-                String nxb=spNxb.getItemAtPosition(position).toString();
+                String nxb=spLoi.getItemAtPosition(position).toString();
                 List<Item> list;
                 if(!nxb.equalsIgnoreCase("all")){
                     list=db.SearchByNXB(nxb);
-
-
                 }else {
                     list=db.getAll();
                 }
                 adapter.setList(list);
-
-
             }
 
             @Override
@@ -93,74 +86,53 @@ public class FragmentSearch extends Fragment implements View.OnClickListener {
 
             }
         });
-        spTacGia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spGia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position , long l) {
-                String tacgia=spTacGia.getItemAtPosition(position).toString();
+                String tacgia=spGia.getItemAtPosition(position).toString();
                 List<Item> list;
                 if(!tacgia.equalsIgnoreCase("all")){
                     list=db.SearchByTacGia(tacgia);
-
-
                 }else {
                     list=db.getAll();
                 }
                 adapter.setList(list);
-
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
-
     }
-
-
     private void initView(View view) {
         recyclerView=view.findViewById(R.id.recycleView);
-
-        btSearch=view.findViewById(R.id.btSearch);
         searchView=view.findViewById(R.id.search);
-
-        spTacGia=view.findViewById(R.id.spTacGia);
-        spNxb=view.findViewById(R.id.spNxb);
+        spGia=view.findViewById(R.id.spGia);
+        spLoi=view.findViewById(R.id.spLoi);
         String[] arr=getResources().getStringArray(R.array.tacgia);
         String [] arr1=new String[arr.length+1];
         arr1[0]="all";
         for(int i=0;i<arr.length;i++){
             arr1[i+1]=arr[i];
-
         }
-        spTacGia.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.item_spinner,arr1));
+        spGia.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.item_spinner,arr1));
         String[] arr2=getResources().getStringArray(R.array.nxb);
         String [] arr3=new String[arr2.length+1];
-
         arr3[0]="all";
         for(int i=0;i<arr2.length;i++){
             arr3[i+1]=arr2[i];
-
         }
-        spNxb.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.item_spinner,arr3));
-
-
-
-
-
+        spLoi.setAdapter(new ArrayAdapter<String>(getContext(),R.layout.item_spinner,arr3));
     }
 
     @Override
     public void onClick(View view) {
-        if(view==btSearch){
 
-            return;
-        }
+    }
 
-
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        List<Item> list=db.getAll();
+        adapter.setList(list);
     }
 }

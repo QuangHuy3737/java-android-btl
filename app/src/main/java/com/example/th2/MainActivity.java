@@ -7,11 +7,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.th2.adapter.ViewPagerAdapter;
 import com.example.th2.AddActivity;
+import com.example.th2.model.Item;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -19,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigationView;
     private ViewPager viewPager;
     private FloatingActionButton fab;
+    public String userName;
 
+    public String getUserName() {
+        return userName;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
         navigationView=findViewById(R.id.bottom_nav);
         viewPager=findViewById(R.id.viewPager);
         fab=findViewById(R.id.fab);
+        Intent intent = getIntent();
+        userName=(String) intent.getSerializableExtra("name");
+        if(userName.equals("admin") ){
+            fab.setVisibility(View.VISIBLE);
+        }
+        else{
+            fab.setVisibility(View.GONE);
+        }
+//        userName="hang";
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
