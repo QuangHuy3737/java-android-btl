@@ -34,7 +34,6 @@ public class UpdateNopTien extends AppCompatActivity implements View.OnClickList
         initView();
         btBack.setOnClickListener(this);
         btUpdate.setOnClickListener(this);
-        btRemove.setOnClickListener(this);
         Intent intent=getIntent();
         item=(Item) intent.getSerializableExtra("item");
         db=new SQLiteHelper(this);
